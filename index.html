@@ -34,5 +34,35 @@
 	  	document.loginForm.submit();
 	  }
 	  </script>
+	<style type="text/css">
+	#canvas {
+		border: 2px solid #ccc;
+		margin-bottom: 10px;
+	}
+	#container {
+		width: 400px;
+		margin: auto;
+	}
+	#shapes_container span {
+		margin: 10px;
+	}
+	</style>
+	
+	<body>
+		<div id='container'>
+			<canvas id='canvas' width='400' height='400'>
+				This application makes use of the html5 canvas element. Please upgrade your browser if you are reading this message!
+			</canvas>
+			<div id='shapes_container'>
+				<span>Pencil</span>
+				<span>Triangle</span>
+				<span>Rectangle</span>
+				<span id='square'>Square</span>
+				<span id='circle'>Circle</span>
+			</div>
+		</div>
+		
+	<!-- draw objects dependency (draw-objects.js) goes here -->
+	<script type="text/javascript" src='src/feature/draw-objects.js'></script>
 	</body>
 </html>
