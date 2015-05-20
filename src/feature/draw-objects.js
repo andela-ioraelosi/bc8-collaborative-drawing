@@ -162,7 +162,6 @@ function createShape(event){
 // SAVE DRAWING RETURNS THE BASE64 FORMAT THAT CAN BE STORED IN THE DATABASE
 function saveDrawing(){
 	var dataURL = my_canvas.toDataURL();
-	console.log(dataURL);
 }
 
 // LOAD IMAGE SHOULD FETCH THE IMAGE BASE64 FORMAT AND CREATE A NEW CANVAS IMAGE FROM IT
@@ -239,6 +238,8 @@ var prevx = 0;
 var prevy = 0;
 var startPointX = 0;
 var startPointY = 0;
+var dragged = false;
+var pathMoveArray = [];
 
 my_canvas.addEventListener("mousedown", function(){
 	if(typeof pencil === 'object')
@@ -262,6 +263,7 @@ my_canvas.addEventListener("mousedown", function(){
 my_canvas.addEventListener("mousemove", function(){
 	if(downFlag === 1 && typeof pencil === 'object')
 	{
+		// set path objects
 		x = event.pageX - my_canvas.offsetLeft;
 		y = event.pageY - my_canvas.offsetTop;
 
@@ -270,8 +272,18 @@ my_canvas.addEventListener("mousemove", function(){
 	    context.lineTo(x,y);
 	    context.stroke();
 
+	    // assign path variables
+	    var pathObj = {
+			prevx: prevx,
+			prevy: prevy,
+			movex: x,
+			movey: y
+		}
+		pathMoveArray.push(pathObj);
+
 	    prevx = x;
 	    prevy = y;
+	    dragged = true;
 	}
 	else if(downFlag === 1 && typeof erase === 'object')
 	{
@@ -291,12 +303,36 @@ my_canvas.addEventListener("mouseup", function(){
 
 	if(downFlag===1 && typeof pencil === 'object')
 	{
+		if(dragged === true)
+		{
+			var pathObj = {
+				prevx: startPointX,
+				prevy: startPointY,
+				movex: x,
+				movey: y
+			}
+			pathMoveArray.push(pathObj);
+		    context.moveTo(startPointX,startPointY);
+		    context.lineTo(x,y);
+		    context.stroke();
+		    context.closePath();
+		}
+	}
+	if(pathMoveArray.length !== 0)
+	{
 		context.beginPath();
-	    context.moveTo(startPointX,startPointY);
-	    context.lineTo(x,y);
+	    context.moveTo(pathMoveArray[0].prevx, pathMoveArray[0].prevy);
+	    for(var i = 0; i < pathMoveArray.length; i++)
+	    {
+			context.lineTo(pathMoveArray[i].movex, pathMoveArray[i].movey);
+	    }
+	    context.closePath();
 	    context.stroke();
 	}
-	
+	console.log(pathMoveArray);
+	pathMoveArray = [];
+	console.log(pathMoveArray);
+	dragged = false;
 	downFlag = 0;
 
 }, false);
