@@ -23,6 +23,9 @@ blackline_select = document.getElementById('line_black'),
 pinkline_select = document.getElementById('line_pink'),
 redline_select = document.getElementById('line_red'),
 greenline_select = document.getElementById('line_green'),
+// save button
+save_button = document.getElementById('save'),
+load_button = document.getElementById('load'),
 // context
 context = my_canvas.getContext('2d');
 
@@ -65,6 +68,10 @@ blackline_select.onclick = selectLineColor;
 pinkline_select.onclick = selectLineColor;
 redline_select.onclick = selectLineColor;
 greenline_select.onclick = selectLineColor;
+
+// saving the image
+save_button.onclick = saveDrawing;
+load_button.onclick = loadImage;
 
 
 
@@ -149,6 +156,20 @@ function createShape(event){
 		pencil.posX = x;
 		pencil.posY = y;
 	}
+}
+
+
+// SAVE DRAWING RETURNS THE BASE64 FORMAT THAT CAN BE STORED IN THE DATABASE
+function saveDrawing(){
+	var dataURL = my_canvas.toDataURL();
+	console.log(dataURL);
+}
+
+// LOAD IMAGE SHOULD FETCH THE IMAGE BASE64 FORMAT AND CREATE A NEW CANVAS IMAGE FROM IT
+function loadImage(){
+	var img = new Image;
+	img.src = '' // IMAGE SOURCE DATA TO BE FETCHED FROM FIREBASE; 
+	context.drawImage(img,0,0);
 }
 
 
