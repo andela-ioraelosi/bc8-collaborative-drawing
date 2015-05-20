@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang='en'>
+	<head>
+		<title>Collaborative Drawing</title>
+		<meta charset="utf-8">
+		<link type="text/css" rel="stylesheet" href="src/style.css"/>
+		<script src="https://cdn.firebase.com/js/client/2.2.5/firebase.js"></script>
+	</head>
+	<body>
+
+		<div class="container">
+			<section id="content">
+				<form name = "loginForm" METHOD = POST>
+					<h1>Log in <br> <br>Collaborative Drawing</h1>
+					<div>
+						<input type="text" placeholder="Email" required="" id="login-email" />
+					</div>
+					<div>
+						<input type="password" placeholder="Password" required="" id="login-password" />
+					</div>
+					<div>
+						<input type="button" value="Log in" id = "login" class= "textfield" name="login" />
+						
+					</div>
+				</form><!-- form -->
+				<button onClick="registerPage()"/>Register</button>
+			</section><!-- content -->
+			<div id= "user-management-content">
+
+			</div>
+			<div id= "canvasContent">
+
+			</div>
+		</div><!-- container -->
+		
+
+	
+
+	<script src="jquery-1.11.3.min.js"></script>
+	<script src= "src/feature/login.js"></script>
+	<script> var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com/"); </script>
+	<script>
+		function registerPage(){
+			window.location.href = "register.html";
+			//document.loginForm.submit();
+		}
+	</script>
+	</body>
+</html>

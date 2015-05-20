@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang='en'>
+	<head>
+		<title>Register Page</title>
+		<meta charset="utf-8">
+		<link type="text/css" rel="stylesheet" href="src/style.css"/>
+		<script src="https://cdn.firebase.com/js/client/2.2.5/firebase.js"></script>
+	</head>
+	<body>
+		<div class="container">
+	<section id="content">
+		<form name="registerForm" METHOD=POST>
+			<h1>Register Form <br> <br> Collaborative Drawing</h1>
+			<div>
+				<input type="text" placeholder="Email" required="" id="register-email" />
+			</div>
+			<div>
+				<input type="password" placeholder="Password" required="" id="register-password" />
+			</div>
+			<div>
+				<input type="button" value="Register" id = "register" class= "textfield" name="login" />
+
+				<input type="button" value="Back" id = "back" class= "textfield" name="login" onClick="indexPage()"/>
+			</div>
+		</form><!-- form -->
+	</section><!-- content -->
+</div><!-- container -->
+	  <script src="jquery-1.11.3.min.js"></script>
+		<script src= "src/feature/login.js"></script>
+	  <script>
+	   function indexPage(){
+	   	document.registerForm.action = "index.html"
+	   	document.registerForm.submit();
+	   }
+
+	  </script>
+	</body>
+</html>
