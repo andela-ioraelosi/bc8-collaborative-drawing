@@ -1,20 +1,20 @@
-// The firebase link is my text link, to be changed
+
 ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 
 
-firebase.child('games').set({gameOne: 'Runner', gameTwo: 'Jumper', gameThree: 'Fighter'});
+ref.child('games').set({gameOne: 'Runner', gameTwo: 'Jumper', gameThree: 'Fighter'});
 
 
 //Transfering drawing data to firebase.
 
-var gameScore = function (userId, loggeIn, imagedata) 
+var gameScore = function (loggeIn, imagedata) 
 {
 		this.username= userId;
 		this.loggedIn = true;
 		this.imagedata = imagedata
-	 	firebase.child('score').set(
+	 	ref.child('score').set(
 	 {
-	 	username: this.username, score: this.imagedata
+	 	username: score: this.imagedata
 	 });
 }
 
@@ -23,7 +23,7 @@ var gameScore = function (userId, loggeIn, imagedata)
 loggedUser = function() 
 {
 
-    	firebase.child('Users').once('value', function(snapshot) 
+    	ref.child('Users').once('value', function(snapshot) 
     {
       	var userStatus = snapshot.val();
       	for (var user in userStatus) 
@@ -36,7 +36,7 @@ loggedUser = function()
 };
 
 
-firebase.child('Users').on('value', loggedUser)
+ref.child('Users').on('value', loggedUser)
 
 
 //Saving drawing status...
@@ -47,7 +47,7 @@ $(document).ready(
 	{
 		
 		var score = $("#score").val();
-		gameScore(name, true,score);
+		gameScore(true,score);
 		alert(" Your Score Submitted Successfully......");
 	}
 		)

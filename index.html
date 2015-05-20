@@ -8,53 +8,39 @@
 	</head>
 	<body>
 
-	  <div class="container">
-	<section id="content">
-		<form name = "loginForm" METHOD = POST>
-			<h1>Log in <br> <br>Collaborative Drawing</h1>
-			<div>
-				<input type="text" placeholder="Email" required="" id="login-email" />
-			</div>
-			<div>
-				<input type="password" placeholder="Password" required="" id="login-password" />
-			</div>
-			<div>
-				<input type="button" value="Log in" id = "login" class= "textfield" name="login" />
-				<input type="button" value="Register" id = "opener-register" class= "textfield" name="login" onClick="registerPage()"/>
-			</div>
-		</form><!-- form -->
-	</section><!-- content -->
-</div><!-- container -->
-	  	<script src="jquery-1.11.3.min.js"></script>
-		<script src= "src/feature/login.js"></script>
-		<script> var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com/"); </script>
-	  <script>
-	  function registerPage(){
-	  	document.loginForm.action = "register.html"
-	  	document.loginForm.submit();
-	  }
-	  </script>
-	<style type="text/css">
-	#canvas {
-		border: 2px solid #ccc;
-		margin-bottom: 10px;
-		cursor: crosshair;
-	}
-	#container {
-		width: 400px;
-		margin: auto;
-	}
-	#shapes_container span, #fill_colours span, #line_colours span {
-		margin: 10px;
-	}
+		<div class="container">
+			<section id="content">
+				<form name = "loginForm" METHOD = POST>
+					<h1>Log in <br> <br>Collaborative Drawing</h1>
+					<div>
+						<input type="text" placeholder="Email" required="" id="login-email" />
+					</div>
+					<div>
+						<input type="password" placeholder="Password" required="" id="login-password" />
+					</div>
+					<div>
+						<input type="button" value="Log in" id = "login" class= "textfield" name="login" />
+						<input type="button" value="Register" id = "opener-register" class= "textfield" name="login" onClick="registerPage()"/>
+					</div>
+				</form><!-- form -->
+			</section><!-- content -->
+		</div><!-- container -->
+	  	
 
-	#fill_colours {
-		margin: 20px;
-	}
-	</style>
 	
-	<body>
-		
+
+	
+
+	<script src="jquery-1.11.3.min.js"></script>
+	<script src= "src/feature/login.js"></script>
+	<script language = "javascript" type="text/javascript" src = "src/feature/user-management.js"></script>
+	<script> var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com/"); </script>
+	<script>
+		function registerPage(){
+			document.loginForm.action = "register.html"
+			document.loginForm.submit();
+		}
+	</script>
 	<!-- draw objects dependency (draw-objects.js) goes here -->
 	<script type="text/javascript" src='src/feature/draw-objects.js'></script>
 	</body>
