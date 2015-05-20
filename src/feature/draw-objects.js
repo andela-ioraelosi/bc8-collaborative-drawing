@@ -9,6 +9,7 @@ circle_select = document.getElementById('circle'),
 square_select = document.getElementById('square'),
 rectangle_select = document.getElementById('rectangle'),
 triangle_select = document.getElementById('triangle'),
+pencil_select = document.getElementById('pencil'),
 // fill colours
 blue_select = document.getElementById('blue'),
 black_select = document.getElementById('black'),
@@ -19,6 +20,24 @@ green_select = document.getElementById('green'),
 context = my_canvas.getContext('2d');
 
 /*
+// LEARNING THINGS
+function show(){
+	console.log(this);
+}
+
+var Person = {
+	firstname:'some',
+	show: function show(){
+		console.log(this);
+	}
+}
+
+
+show();
+
+Person.show();
+
+
 context.beginPath();
 context.arc(80,80,60,0,2*Math.PI); // full circle object
 context.stroke();
@@ -36,7 +55,7 @@ context.font = '30px Garamond';
 
 // DEFINE VARIABLES IN ONE PLACE
 // define object variables
-var circle, square, rectangle, triangle;
+var circle, square, rectangle, triangle, pencil;
 
 
 // CREATING THE SHAPES EVENT
@@ -47,6 +66,7 @@ circle_select.onclick = selectShape;
 square_select.onclick = selectShape;
 rectangle_select.onclick = selectShape;
 triangle_select.onclick = selectShape;
+pencil_select.onclick = selectShape;
 
 // colour fill event
 blue_select.onclick = selectColor;
@@ -64,6 +84,9 @@ function selectShape(){
 	else if(this === square_select) square = new Square(100,0);
 	else if(this === rectangle_select) rectangle = new Square(120,80);
 	else if(this === triangle_select) triangle = new Triangle(0,0);
+	else if(this === pencil_select) pencil = new Pencil(0,0);
+
+	if(this !== pencil_select) pencil = 0;
 }
 
 // fill colour event
@@ -111,7 +134,11 @@ function createShape(event){
 		triangle = 0;
 	}
 
+	if(typeof pencil === 'object') {
+		pencil.posX = x;
+		pencil.posY = y;
 
+	}
 }
 
 
@@ -161,8 +188,69 @@ var Triangle = function() {
 	};
 };
 
+var Pencil = function() {
+	this.downFlag = 0;
+	this.prevx = 0;
+	this.prevy = 0;
+	this.startPointX = 0;
+	this.startPointY = 0;
+};
+
 Circle.prototype = new Shape();
 
 Square.prototype = new Shape();
 
 Triangle.prototype = new Shape();
+
+Pencil.prototype = new Shape();
+
+
+
+// checking drag function
+// crude
+// to be refined
+
+var downFlag = 0;
+var prevx = 0;
+var prevy = 0;
+var startPointX = 0;
+var startPointY = 0;
+
+my_canvas.addEventListener("mousedown", function(){
+	if(typeof pencil === 'object')
+	{
+	    downFlag = 1;
+	    prevx = event.pageX - my_canvas.offsetLeft;
+		prevy = event.pageY - my_canvas.offsetTop;
+		startPointX = prevx;
+		startPointY = prevy;
+	}
+}, false);
+
+my_canvas.addEventListener("mousemove", function(){
+	if(downFlag === 1 && typeof pencil === 'object')
+	{
+		x = event.pageX - my_canvas.offsetLeft;
+		y = event.pageY - my_canvas.offsetTop;
+
+		context.beginPath();
+	    context.moveTo(prevx,prevy);
+	    context.lineTo(x,y);
+	    context.stroke();
+
+	    prevx = x;
+	    prevy = y;
+	}
+}, false);
+my_canvas.addEventListener("mouseup", function(){
+
+	if(downFlag===1 && typeof pencil === 'object')
+	{
+		context.beginPath();
+	    context.moveTo(startPointX,startPointY);
+	    context.lineTo(x,y);
+	    context.stroke();
+	}
+	downFlag = 0;
+
+}, false);
