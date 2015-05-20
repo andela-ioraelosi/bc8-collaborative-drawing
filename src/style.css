@@ -16,6 +16,22 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	vertical-align: baseline;
 	background: transparent;
 }
+	#canvas {
+		border: 2px solid #ccc;
+		margin-bottom: 10px;
+		cursor: crosshair;
+	}
+	#container {
+		width: 400px;
+		margin: auto;
+	}
+	#shapes_container span, #fill_colours span, #line_colours span {
+		margin: 10px;
+	}
+
+	#fill_colours {
+		margin: 20px;
+	}
 body {
 	background: #DCDDDF url(http://cssdeck.com/uploads/media/items/7/7AF2Qzt.png);
 	color: #000;
