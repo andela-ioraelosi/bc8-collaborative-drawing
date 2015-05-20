@@ -10,44 +10,29 @@ square_select = document.getElementById('square'),
 rectangle_select = document.getElementById('rectangle'),
 triangle_select = document.getElementById('triangle'),
 pencil_select = document.getElementById('pencil'),
+erase_select = document.getElementById('erase'),
 // fill colours
 blue_select = document.getElementById('blue'),
 black_select = document.getElementById('black'),
 pink_select = document.getElementById('pink'),
 red_select = document.getElementById('red'),
 green_select = document.getElementById('green'),
+// line colours
+blueline_select = document.getElementById('line_blue'),
+blackline_select = document.getElementById('line_black'),
+pinkline_select = document.getElementById('line_pink'),
+redline_select = document.getElementById('line_red'),
+greenline_select = document.getElementById('line_green'),
 // context
 context = my_canvas.getContext('2d');
 
-/*
-// LEARNING THINGS
-function show(){
-	console.log(this);
-}
-
-var Person = {
-	firstname:'some',
-	show: function show(){
-		console.log(this);
-	}
-}
-
-
-show();
-
-Person.show();
-
-
-context.beginPath();
-context.arc(80,80,60,0,2*Math.PI); // full circle object
-context.stroke();
-*/
 
 // CONTEXT DEFAULT PROPERTIES
 context.fillStyle = 'black';
 context.strokeStyle = 'black';
-context.lineWidth = 2;
+context.lineWidth = 5;
 context.font = '30px Garamond';
+var prevLineColor = context.strokeStyle;
 
 //context.fillText('Hello', 15, 175);
 
@@ -55,7 +40,7 @@ context.font = '30px Garamond';
 
 // DEFINE VARIABLES IN ONE PLACE
 // define object variables
-var circle, square, rectangle, triangle, pencil;
+var circle, square, rectangle, triangle, pencil, erase;
 
 
 // CREATING THE SHAPES EVENT
@@ -67,13 +52,19 @@ square_select.onclick = selectShape;
 rectangle_select.onclick = selectShape;
 triangle_select.onclick = selectShape;
 pencil_select.onclick = selectShape;
-
+erase_select.onclick = selectShape;
 // colour fill event
 blue_select.onclick = selectColor;
 black_select.onclick = selectColor;
 pink_select.onclick = selectColor;
 red_select.onclick = selectColor;
 green_select.onclick = selectColor;
+// line colour event
+blueline_select.onclick = selectLineColor;
+blackline_select.onclick = selectLineColor;
+pinkline_select.onclick = selectLineColor;
+redline_select.onclick = selectLineColor;
+greenline_select.onclick = selectLineColor;
 
 
 
@@ -85,8 +76,28 @@ function selectShape(){
 	else if(this === rectangle_select) rectangle = new Square(120,80);
 	else if(this === triangle_select) triangle = new Triangle(0,0);
 	else if(this === pencil_select) pencil = new Pencil(0,0);
+	else if(this === erase_select){
+		context.strokeStyle = 'white';
+		context.lineWidth = 10;
+		erase = new Pencil(0,0);
+	}
 
 	if(this !== pencil_select) pencil = 0;
+	if(this !== erase_select){
+		erase = 0;
+		context.strokeStyle = prevLineColor;
+		context.lineWidth = '2';
+	}
+}
+
+function selectLineColor(){
+	if(this === blueline_select) context.strokeStyle = 'blue';
+	else if(this === blackline_select) context.strokeStyle = 'black';
+	else if(this === pinkline_select) context.strokeStyle = 'pink';
+	else if(this === redline_select) context.strokeStyle = 'red';
+	else if(this === greenline_select) context.strokeStyle = 'green';
+
+	prevLineColor = context.strokeStyle;
 }
 
 // fill colour event
@@ -137,7 +148,6 @@ function createShape(event){
 	if(typeof pencil === 'object') {
 		pencil.posX = x;
 		pencil.posY = y;
-
 	}
 }
 
@@ -189,11 +199,7 @@ var Triangle = function() {
 };
 
 var Pencil = function() {
-	this.downFlag = 0;
-	this.prevx = 0;
-	this.prevy = 0;
-	this.startPointX = 0;
-	this.startPointY = 0;
+
 };
 
 Circle.prototype = new Shape();
@@ -205,10 +211,7 @@ Triangle.prototype = new Shape();
 Pencil.prototype = new Shape();
 
 
-
-// checking drag function
-// crude
-// to be refined
+// FREE DRAWING PENCIL FUNCTIONALITY
 
 var downFlag = 0;
 var prevx = 0;
@@ -218,6 +221,14 @@ var startPointY = 0;
 
 my_canvas.addEventListener("mousedown", function(){
 	if(typeof pencil === 'object')
+	{
+	    downFlag = 1;
+	    prevx = event.pageX - my_canvas.offsetLeft;
+		prevy = event.pageY - my_canvas.offsetTop;
+		startPointX = prevx;
+		startPointY = prevy;
+	}
+	else if(typeof erase === 'object')
 	{
 	    downFlag = 1;
 	    prevx = event.pageX - my_canvas.offsetLeft;
@@ -241,6 +252,19 @@ my_canvas.addEventListener("mousemove", function(){
 	    prevx = x;
 	    prevy = y;
 	}
+	else if(downFlag === 1 && typeof erase === 'object')
+	{
+		x = event.pageX - my_canvas.offsetLeft;
+		y = event.pageY - my_canvas.offsetTop;
+
+		context.beginPath();
+	    context.moveTo(prevx,prevy);
+	    context.lineTo(x,y);
+	    context.stroke();
+
+	    prevx = x;
+	    prevy = y;
+	}
 }, false);
 my_canvas.addEventListener("mouseup", function(){
 
@@ -251,6 +275,7 @@ my_canvas.addEventListener("mouseup", function(){
 	    context.lineTo(x,y);
 	    context.stroke();
 	}
+	
 	downFlag = 0;
 
 }, false);
