@@ -3,20 +3,28 @@
 	<head>
 		<title>Register Page</title>
 		<meta charset="utf-8">
-		<link type="text/css" rel="stylesheet" href="src/stylesheet.css"/>
+		<link type="text/css" rel="stylesheet" href="src/style.css"/>
 		<script src="https://cdn.firebase.com/js/client/2.2.5/firebase.js"></script>
 	</head>
 	<body>
-		<h2>Register New User</h2>
-	  <div id="dialog-register" title="Register new user">
-	  	
-	  	<form name= "registerForm" METHOD = POST>
-	  		<input type = 'text' size= "100" name= "register-email" placeholder= "E-mail" id = "register-email" class= "textfields"> <br>
-	  		<input type = "password" size = "100" name= "register-password" placeholder = "Password" id = "register-password" class= "textfields"> <br>
-	  		<input type = "button"  value = "submit" placeholder = "Submit" class= "textfields" id = "register" name="register" > <br> <br>
-	  		<input type = "button" value = "back" class= "regs" name= "back" placeholder="Back" id = "back" onClick= "indexPage()">
-	  	</form>
-	  </div>
+		<div class="container">
+	<section id="content">
+		<form name="registerForm" METHOD=POST>
+			<h1>Register Form <br> <br> Collaborative Drawing</h1>
+			<div>
+				<input type="text" placeholder="Email" required="" id="register-email" />
+			</div>
+			<div>
+				<input type="password" placeholder="Password" required="" id="register-password" />
+			</div>
+			<div>
+				<input type="button" value="Register" id = "register" class= "textfield" name="login" />
+
+				<input type="button" value="Back" id = "back" class= "textfield" name="login" onClick="indexPage()"/>
+			</div>
+		</form><!-- form -->
+	</section><!-- content -->
+</div><!-- container -->
 	  <script src="jquery-1.11.3.min.js"></script>
 		<script src= "src/feature/login.js"></script>
 	  <script>
@@ -24,7 +32,7 @@
 	   	document.registerForm.action = "index.html"
 	   	document.registerForm.submit();
 	   }
-	   
+
 	  </script>
 	</body>
 </html>

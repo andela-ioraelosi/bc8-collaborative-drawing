@@ -3,25 +3,28 @@
 	<head>
 		<title>Collaborative Drawing</title>
 		<meta charset="utf-8">
-		<link type="text/css" rel="stylesheet" href="src/stylesheet.css"/>
+		<link type="text/css" rel="stylesheet" href="src/style.css"/>
 		<script src="https://cdn.firebase.com/js/client/2.2.5/firebase.js"></script>
 	</head>
 	<body>
 
-	  <div id="dialog-login" title="Login">
-
-	  	<form name= "loginForm" METHOD = POST>
-
-	  		<center><h1>Collaborative Drawing</h1></center>
-            <input type = "text" size= "100" name= "login-email" id = "login-email" placeholder= "E-mail" class= "textfield"> <br>
-            
-            <input type = "password" size = "100" name= "login-password" id = "login-password" placeholder = "Password" class= "textfield"> <br>
-            
-            <input type = "button" value = "Login" id = "login" class= "textfield" name="login"> <br> <br>
-
-            <input type = "button" value = "Register" class= "reg" name= "register" id = "opener-register" onClick="registerPage()">
-		</form>	
-	  </div>
+	  <div class="container">
+	<section id="content">
+		<form name = "loginForm" METHOD = POST>
+			<h1>Log in <br> <br>Collaborative Drawing</h1>
+			<div>
+				<input type="text" placeholder="Email" required="" id="login-email" />
+			</div>
+			<div>
+				<input type="password" placeholder="Password" required="" id="login-password" />
+			</div>
+			<div>
+				<input type="button" value="Log in" id = "login" class= "textfield" name="login" />
+				<input type="button" value="Register" id = "opener-register" class= "textfield" name="login" onClick="registerPage()"/>
+			</div>
+		</form><!-- form -->
+	</section><!-- content -->
+</div><!-- container -->
 	  	<script src="jquery-1.11.3.min.js"></script>
 		<script src= "src/feature/login.js"></script>
 		<script> var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com/"); </script>
