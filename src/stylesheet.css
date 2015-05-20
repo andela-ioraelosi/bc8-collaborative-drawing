@@ -1,0 +1,60 @@
+.textfield {
+	height: 50px;
+	width: 350px;
+	font-family: Garamond;
+	border: solid;
+	border-color: red;
+	font-weight: bold;
+	background-color: teal;
+	border-color: black;
+	font-size: 25px;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 10px;
+	border-top-right-radius: 10px;
+
+}
+form {
+	margin-top: 200px;
+	margin-left: 500px;
+}
+h1{
+	
+	font-family: Garamond;
+	font-size: 70px;
+}
+.reg {
+	height: 30px;
+	width: 250px;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Garamond;
+	text-align: center;
+	margin-left: 60px;
+}
+
+.textfields {
+	height: 50px;
+	width: 350px;
+	font-family: Garamond;
+	border: solid;
+	border-color: red;
+	font-weight: bold;
+	background-color: teal;
+	border-color: black;
+	font-size: 25px;
+	text-align: center;
+	margin-top: 10px;
+	margin-left: 10px;
+	border-top-right-radius: 10px;
+}
+
+.regs {
+	height: 30px;
+	width: 250px;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Garamond;
+	text-align: center;
+	margin-left: 60px;
+}
