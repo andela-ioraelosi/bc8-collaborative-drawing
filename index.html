@@ -20,28 +20,30 @@
 					</div>
 					<div>
 						<input type="button" value="Log in" id = "login" class= "textfield" name="login" />
-						<input type="button" value="Register" id = "opener-register" class= "textfield" name="login" onClick="registerPage()"/>
+						
 					</div>
 				</form><!-- form -->
+				<button onClick="registerPage()"/>Register</button>
 			</section><!-- content -->
-		</div><!-- container -->
-	  	
+			<div id= "user-management-content">
 
-	
+			</div>
+			<div id= "canvasContent">
+
+			</div>
+		</div><!-- container -->
+		
 
 	
 
 	<script src="jquery-1.11.3.min.js"></script>
 	<script src= "src/feature/login.js"></script>
-	<script language = "javascript" type="text/javascript" src = "src/feature/user-management.js"></script>
 	<script> var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com/"); </script>
 	<script>
 		function registerPage(){
-			document.loginForm.action = "register.html"
-			document.loginForm.submit();
+			window.location.href = "register.html";
+			//document.loginForm.submit();
 		}
 	</script>
-	<!-- draw objects dependency (draw-objects.js) goes here -->
-	<script type="text/javascript" src='src/feature/draw-objects.js'></script>
 	</body>
 </html>
