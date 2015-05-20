@@ -329,9 +329,7 @@ my_canvas.addEventListener("mouseup", function(){
 	    context.closePath();
 	    context.stroke();
 	}
-	console.log(pathMoveArray);
 	pathMoveArray = [];
-	console.log(pathMoveArray);
 	dragged = false;
 	downFlag = 0;
 
