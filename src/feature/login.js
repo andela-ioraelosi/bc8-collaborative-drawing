@@ -10,6 +10,9 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 		  if (error) {
 		    console.log("Login Failed!", error);
 		  } else {
+	  		$("#content").hide();
+	    	$("#user-management-content").load("user-management.html");
+	    	$("#canvasContent").load("canvas.html");
 		    console.log("Authenticated successfully with payload:", authData);
 		  }
 		}
@@ -25,8 +28,9 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 	            ref.createUser(userObj, function (error, user){
 	            	 if (!error) {
                         console.log('logging new registered user');
-                        doLogin(userObj);
+                        
                         //ToDo redirect to canvas page
+                        window.location.href = 'index.html';
                      } else {
                         console.log("Failed to register User");
                      }
@@ -51,10 +55,14 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
             }
 
 		);
+
+		$('#logout').click(function(){
+		ref.unauth();
+		window.location.href="index.html"
+		});
 		  	
 	  	function doLogin(userObj) {
 		    ref.authWithPassword(userObj, authHandler);
-
 		};
 
     });

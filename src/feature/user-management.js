@@ -9,13 +9,12 @@ ref.child('games').set({gameOne: 'Runner', gameTwo: 'Jumper', gameThree: 'Fighte
 
 var gameScore = function (loggeIn, imagedata) 
 {
-		this.username= userId;
 		this.loggedIn = true;
 		this.imagedata = imagedata
 	 	ref.child('score').set(
-	 {
-	 	username: score: this.imagedata
-	 });
+		 {
+		 	score: this.imagedata
+		 });
 }
 
 //Displaying users online.
