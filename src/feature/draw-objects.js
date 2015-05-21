@@ -1,3 +1,13 @@
+/*
+* AUTHOR: OLUWAKAMIYE ADELEMONI
+* DATE: 21ST MAY, 2015
+* DECRIPTION: This script enables users to draw regular shapes
+* 			  as well as free line drawing like pencils. 
+			  The script also allows changing line colours
+			  and fill colours
+
+*/
+
 // draw objects feature goes here
 console.log('Draw Objects Begin');
 
@@ -86,11 +96,37 @@ load_button.onclick = loadImage;
 // SELECTOR FUNCTIONS
 // circle selector
 function selectShape(){
-	if(this === circle_select) circle = new Circle(0,0);
-	else if(this === square_select) square = new Square(100,0);
-	else if(this === rectangle_select) rectangle = new Square(120,80);
-	else if(this === triangle_select) triangle = new Triangle(0,0);
-	else if(this === pencil_select) pencil = new Pencil(0,0);
+	if(this === circle_select){
+		circle = new Circle(0,0);
+		square = 0;
+		triangle = 0;
+		rectangle = 0;
+	}
+	else if(this === square_select){
+		square = new Square(100,0);
+		circle = 0;
+		triangle = 0;
+		rectangle = 0;
+	}
+	else if(this === rectangle_select) {
+		rectangle = new Square(120,80);
+		square = 0;
+		triangle = 0;
+		circle = 0;
+	}
+	else if(this === triangle_select) {
+		triangle = new Triangle(0,0);
+		square = 0;
+		circle = 0;
+		rectangle = 0;
+	}
+	else if(this === pencil_select) {
+		pencil = new Pencil(0,0);
+		circle = 0;
+		square = 0;
+		triangle = 0;
+		rectangle = 0;
+	}
 	else if(this === erase_select){
 		context.strokeStyle = 'white';
 		context.lineWidth = 10;
