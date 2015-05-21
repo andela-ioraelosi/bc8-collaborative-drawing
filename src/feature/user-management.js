@@ -19,19 +19,26 @@ var gameScore = function (loggeIn, imagedata)
 
 loggedUser = function() 
 {
-
-    	ref.child('Username').child("username")once('child_added', function(snapshot) 
-    {		var userArr = [];
+	ref.child('Username').on('value', function(snapshot) 
+    {	
+    	var userArr = [];
+    	var text = '';
       	var userStatus = snapshot.val();
-    		var $usersOn = $('#usersOnline');
-   			$usersOn.text(userStatus);
-      
+		var $usersOn = $('#usersOnline');
+		for (var user in userStatus)
+		{
+			username = userStatus[user]['username'];
+			userArr.push(username);
+			text+=username+'<br>';
+      		
+      	}
+      	$usersOn.html(text);
+      	console.log(userArr);
     })
 };
 
 
 ref.child('Username').on('value', loggedUser)
-
 
 //Saving drawing status...
 
