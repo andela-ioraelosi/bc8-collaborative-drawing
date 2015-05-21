@@ -1,6 +1,5 @@
 
 function getCanvas (){
-	console.log('function called');
 	ref.child('savedDrawing').on("value", function(snapshot)
 	{	
 		var canvas = document.getElementById('canvas');
@@ -9,7 +8,6 @@ function getCanvas (){
 		var img = new Image;
 		img.src = canvasValue["drawing"];
 		context.drawImage(img, 0, 0);
-		console.log(img.src);
 	})
 }
 
@@ -19,7 +17,7 @@ getCanvas();
 
 var flag = 0;
 
-$('#canvas').click(function(){
+$('#canvas').mousedown(function(){
 	flag = 1;
 	var imgSrc = canvas.toDataURL();
 	ref.child('savedDrawing').set({
@@ -39,5 +37,17 @@ $('#canvas').mousemove(function(){
 	}
 })
 .mouseup(function() {
+	flag = 0;
+});
+
+$('span').mousedown(function(){
+	flag = 1;
+	var imgSrc = canvas.toDataURL();
+	ref.child('savedDrawing').set({
+		drawing : imgSrc
+	})
+});
+
+$('span').mouseup(function() {
 	flag = 0;
 });
