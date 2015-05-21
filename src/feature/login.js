@@ -17,10 +17,24 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 		  }
 		}
 
+		 function sendUsername (username){
+			this.username = username
+			console.log('Setting:' +username );
+			ref.child('Username').push({
+				username : username
+			})
+			
+			//var pushUsername = ref.push();
+			//pushUsername.set({Username: username});
+		}
+
+
 		$("#register").click(
 			function () {
 				var email = $("#register-email").val();
 	            var password = $("#register-password").val();
+				var username = $("#Username").val();
+				sendUsername(username);	            
 	            var userObj = {
 	            	email: email,
 	            	password: password
@@ -28,7 +42,6 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 	            ref.createUser(userObj, function (error, user){
 	            	 if (!error) {
                         console.log('logging new registered user');
-                        
                         //ToDo redirect to canvas page
                         window.location.href = 'index.html';
                      } else {
@@ -36,6 +49,7 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
                      }
                 });
 
+                	
 	        }
 
 			
