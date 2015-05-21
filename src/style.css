@@ -22,6 +22,14 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 		cursor: crosshair;
 		background-color:  white;
 	}
+
+	#regi {
+		float: right;
+	}
+
+	#login {
+		float: left;
+	}
 	#container {
 		width: 400px;
 		margin: auto;

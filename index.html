@@ -8,7 +8,6 @@
 		<script src="https://cdn.firebase.com/js/client/2.2.5/firebase.js"></script>
 	</head>
 	<body>
-
 		<div class="container">
 			<section id="content">
 				<form name = "loginForm" METHOD = POST>
@@ -21,10 +20,18 @@
 					</div>
 					<div>
 						<input type="button" value="Log in" id = "login" class= "textfield" name="login" />
-						
+									<br>	<button onClick="registerPage()"/ id="regi">Register</button>
+
+						<br>
+						<br>
+					<div>
+						<input type="text" placeholder="Recovery Email" required="" id="forgot-email" />
 					</div>
+					<div>
+						<input type="button" value="Reset Password" id = "forgotPassword" class= "textfield" name="forgotPassword" />
+					</div>
+					<br>
 				</form><!-- form -->
-				<button onClick="registerPage()"/>Register</button>
 			</section><!-- content -->
 			<div id= "user-management-content">
 
