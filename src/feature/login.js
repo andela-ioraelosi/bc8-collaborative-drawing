@@ -10,11 +10,7 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 		  if (error) {
 		    console.log("Login Failed!", error);
 		  } else {
-	  		$("#content").hide();
-	    	$("#user-management-content").load("user-management.html");
-	    	$("#canvasContent").load("canvas.html", function(){
-	    		getCanvas();
-	    	});
+	  		window.location.href = 'canvas.html';
 		    console.log("Login Successful:", authData);
 		  }
 		}

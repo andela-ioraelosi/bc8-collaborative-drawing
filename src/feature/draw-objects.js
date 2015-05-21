@@ -174,12 +174,13 @@ function createShape(event){
 // SAVE DRAWING RETURNS THE BASE64 FORMAT THAT CAN BE STORED IN THE DATABASE
 function saveDrawing(){
 	var dataURL = my_canvas.toDataURL();
+	console.log(dataURL);
 }
 
 // LOAD IMAGE SHOULD FETCH THE IMAGE BASE64 FORMAT AND CREATE A NEW CANVAS IMAGE FROM IT
 function loadImage(){
 	var img = new Image;
-	img.src = '' // IMAGE SOURCE DATA TO BE FETCHED FROM FIREBASE; 
+	img.src = ''; // IMAGE SOURCE DATA TO BE FETCHED FROM FIREBASE; 
 	context.drawImage(img,0,0);
 }
 
