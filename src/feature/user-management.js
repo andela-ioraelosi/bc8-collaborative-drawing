@@ -2,18 +2,16 @@
 ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 
 
-ref.child('games').set({gameOne: 'Runner', gameTwo: 'Jumper', gameThree: 'Fighter'});
-
-
 //Transfering drawing data to firebase.
 
 var gameScore = function (loggeIn, imagedata) 
 {
+
 		this.loggedIn = true;
 		this.imagedata = imagedata
-	 	ref.child('score').set(
+	 	ref.child('savedDrawing').set(
 		 {
-		 	score: this.imagedata
+		 	drawing: this.imagedata
 		 });
 }
 
@@ -22,33 +20,50 @@ var gameScore = function (loggeIn, imagedata)
 loggedUser = function() 
 {
 
-    	ref.child('Users').once('value', function(snapshot) 
-    {
+    	ref.child('Username').once('value', function(snapshot) 
+    {	var userArr = [];
       	var userStatus = snapshot.val();
       	for (var user in userStatus) 
-     	{
+      		userArr.push(user)
     		var $usersOn = $('#usersOnline');
-
-   			$usersOn.text(user);
-      }
+   			$usersOn.text(userArr);
+      
     })
 };
 
 
-ref.child('Users').on('value', loggedUser)
+ref.child('Username').on('value', loggedUser)
 
 
 //Saving drawing status...
-$(document).ready(
+
+ $(document).ready(
 	function()
 {	
- 		$("#savegame").click(function() 
+ 		$("#savedrawing").click(function() 
 	{
-		
-		var score = $("#score").val();
-		gameScore(true,score);
-		alert(" Your Score Submitted Successfully......");
+		var my_canvas = $("#canvas");
+		var drawing = my_canvas.toDataURL();
+		gameScore(true,drawing);
+		console.log(my_canvas);
+		alert(" Your Drawing Saved Successfully......");
 	}
 		)
+}) 
  
+ //Loading saved drawing
+
+$(document).ready(function()
+{	
+ 		$("#resumedrawing").click(function() 
+	{
+		ref.child('savedDrawing').once('value', function(snapshot) 
+    {
+      	var drawingStatus = snapshot.val();
+		var $saveddrawing = $("#canvas");
+		$saveddrawing.text(drawingStatus);
+		alert(" Saved Drawing Loaded Successfully");
+	}	)
 })
+
+ 	});
