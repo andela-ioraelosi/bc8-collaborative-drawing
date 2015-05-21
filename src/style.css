@@ -134,7 +134,7 @@ form:after {
 	clear: both;
 	visibility: hidden;
 }
-.container { margin: 25px auto; position: relative; width: 900px; }
+
 #content {
 	background: #f9f9f9;
 	background: -moz-linear-gradient(top,  rgba(248,248,248,1) 0%, rgba(249,249,249,1) 100%);
@@ -149,7 +149,7 @@ form:after {
 	-o-box-shadow: 0 1px 0 #fff inset;
 	box-shadow: 0 1px 0 #fff inset;
 	border: 1px solid #c4c6ca;
-	margin: 0 auto;
+	margin: 20px auto;
 	padding: 25px 0 0;
 	position: relative;
 	text-align: center;
@@ -261,6 +261,12 @@ form:after {
 	border: 1px solid #ed1c24;
 	outline: none;
 }
+
+#user-management-content {
+	width: 900px;
+	margin: auto;
+}
+
 #login-email { background-position: 10px 10px !important }
 #login-password { background-position: 10px -53px !important }
 #content form input[type="submit"] {
