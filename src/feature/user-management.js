@@ -20,13 +20,11 @@ var gameScore = function (loggeIn, imagedata)
 loggedUser = function() 
 {
 
-    	ref.child('Username').once('value', function(snapshot) 
-    {	var userArr = [];
+    	ref.child('Username').child("username")once('child_added', function(snapshot) 
+    {		var userArr = [];
       	var userStatus = snapshot.val();
-      	for (var user in userStatus) 
-      		userArr.push(user)
     		var $usersOn = $('#usersOnline');
-   			$usersOn.text(userArr);
+   			$usersOn.text(userStatus);
       
     })
 };
