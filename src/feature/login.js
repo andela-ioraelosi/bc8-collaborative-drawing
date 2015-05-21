@@ -12,8 +12,10 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 		  } else {
 	  		$("#content").hide();
 	    	$("#user-management-content").load("user-management.html");
-	    	$("#canvasContent").load("canvas.html");
-		    console.log("Authenticated successfully with payload:", authData);
+	    	$("#canvasContent").load("canvas.html", function(){
+	    		getCanvas();
+	    	});
+		    console.log("Login Successful:", authData);
 		  }
 		}
 
@@ -21,12 +23,36 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 			this.username = username
 			console.log('Setting:' +username );
 			ref.child('Username').push({
-				username : username
+				 username
 			})
 			
-			//var pushUsername = ref.push();
-			//pushUsername.set({Username: username});
 		}
+
+		function getCanvas (){
+
+			ref.child('savedDrawing').on("value", function(snapshot)
+			{	
+				var canvas = $("#canvas");
+				var context = canvas.getContext("2d");
+				var canvasValue = snapshot.val();
+				var img = new Image;
+				img.src = canvasValue["drawing"];
+				context.drawImage(img, 0, 0);
+				console.log(canvasValue["drawing"]);
+			})
+		} 
+
+		var canvas = $("#canvas");
+		canvas.click(function(){
+			var imgSrc = canvas.toDataURL();
+			ref.child('savedDrawing').set({
+				drawing : imgSrc
+			})
+
+		});
+
+
+		
 
 
 		$("#register").click(
