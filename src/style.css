@@ -26,12 +26,82 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 		width: 400px;
 		margin: auto;
 	}
-	#shapes_container span, #fill_colours span, #line_colours span {
+	#shapes_container span, #fill_colours span {
+		cursor: pointer;
 		margin: 10px;
 	}
 
-	#fill_colours {
-		margin: 20px;
+	#fill_colours span {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+	}
+
+	#line_colours span {
+		cursor: pointer;
+	}
+	/* FILL COLOURS */
+	#blue {
+		background-color: blue;
+	}
+
+	#black {
+		background-color: black;
+	}
+
+	#red {
+		background-color: red;
+	}
+
+	#green {
+		background-color: green;
+	}
+
+	#pink {
+		background-color: pink;
+	}
+
+	#purple {
+		background-color: purple;
+	}
+
+	#yellow {
+		background-color: yellow;
+	}
+
+	/* LINE COLOURS */
+
+	#line_blue {
+		color: blue;
+	}
+
+	#line_black {
+		color: black;
+	}
+
+	#line_red {
+		color: red;
+	}
+
+	#line_green {
+		color: green;
+	}
+
+	#line_pink {
+		color: pink;
+	}
+
+	#line_purple {
+		color: purple;
+	}
+
+	#line_yellow {
+		color: yellow;
+	}
+
+	#fill_colours, #shapes_container, #line_colours {
+		margin-top: 10px;
+		margin-bottom: 5px;
 	}
 body {
 	background: #DCDDDF url(http://cssdeck.com/uploads/media/items/7/7AF2Qzt.png);
