@@ -47,7 +47,7 @@ ref.child('Username').on('value', loggedUser)
 {	
  		$("#savedrawing").click(function() 
 	{
-		var my_canvas = $("#canvas");
+		var my_canvas = document.getElementById('canvas');
 		var drawing = my_canvas.toDataURL();
 		gameScore(true,drawing);
 		console.log(my_canvas);

@@ -12,10 +12,21 @@
 		<div class="container">
 			<!-- content -->
 			<div id= "user-management-content">
-
+				<div>
+					<p>	
+						<button type = 'button' id = 'savedrawing' >Save Drawing </button>
+						<button type = 'button' id = 'resumedrawing' >Load Saved Drawing </button>
+					</p>
+				</div>
 			</div>
 			<div id= "canvasContent">
+				<span id='active-users'>
+					<p>Also Drawing....</p>
+					<ul id = 'usersOnline' style='float:left'></ul>
+				</span>
+					
 				<div id='container'>
+
 					<canvas id='canvas' width='400' height='400'>
 						This application makes use of the html5 canvas element. Please upgrade your browser if you are reading this message!
 					</canvas>
@@ -66,6 +77,7 @@
 
 	<script src="jquery-1.11.3.min.js"></script>
 	<script> var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com/"); </script>
+	<script language = "javascript" type="text/javascript" src = "src/feature/user-management.js"></script>
 	<script type="text/javascript" src='src/feature/firebase_update.js'></script>
 
 	</body>

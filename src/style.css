@@ -271,8 +271,13 @@ form:after {
 }
 
 #user-management-content {
-	width: 900px;
+	width: 400px;
 	margin: auto;
+}
+
+#active-users {
+	position: absolute;
+  	left: 300px;
 }
 
 #login-email { background-position: 10px 10px !important }
