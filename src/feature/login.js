@@ -92,6 +92,19 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 
 		);
 
+		 $("#forgotPassword").click(function () {
+	       	  var email = $("#forgot-email").val();
+	          var emailObj = {email: email};
+	          ref.resetPassword(emailObj, function(error) {
+	            if (error === null) {
+	              console.log("Password reset email sent successfully");
+	            } 
+	            else {
+	              console.log("Error sending password reset email:", error);
+	            }
+	          });
+	    });
+
 		$('#logout').click(function(){
 		ref.unauth();
 		window.location.href="index.html"
