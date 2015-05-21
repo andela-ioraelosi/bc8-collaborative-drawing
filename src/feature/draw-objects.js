@@ -17,12 +17,16 @@ black_select = document.getElementById('black'),
 pink_select = document.getElementById('pink'),
 red_select = document.getElementById('red'),
 green_select = document.getElementById('green'),
+purple_select = document.getElementById('purple'),
+yellow_select = document.getElementById('yellow'),
 // line colours
 blueline_select = document.getElementById('line_blue'),
 blackline_select = document.getElementById('line_black'),
 pinkline_select = document.getElementById('line_pink'),
 redline_select = document.getElementById('line_red'),
 greenline_select = document.getElementById('line_green'),
+purpleline_select = document.getElementById('line_purple'),
+yellowline_select = document.getElementById('line_yellow'),
 // save button
 save_button = document.getElementById('save'),
 load_button = document.getElementById('load'),
@@ -62,12 +66,16 @@ black_select.onclick = selectColor;
 pink_select.onclick = selectColor;
 red_select.onclick = selectColor;
 green_select.onclick = selectColor;
+purple_select.onclick = selectColor;
+yellow_select.onclick = selectColor;
 // line colour event
 blueline_select.onclick = selectLineColor;
 blackline_select.onclick = selectLineColor;
 pinkline_select.onclick = selectLineColor;
 redline_select.onclick = selectLineColor;
 greenline_select.onclick = selectLineColor;
+purpleline_select.onclick = selectLineColor;
+yellowline_select.onclick = selectLineColor;
 
 // saving the image
 save_button.onclick = saveDrawing;
@@ -103,6 +111,8 @@ function selectLineColor(){
 	else if(this === pinkline_select) context.strokeStyle = 'pink';
 	else if(this === redline_select) context.strokeStyle = 'red';
 	else if(this === greenline_select) context.strokeStyle = 'green';
+	else if(this === purpleline_select) context.strokeStyle = 'purple';
+	else if(this === yellowline_select) context.strokeStyle = 'yellow';
 
 	prevLineColor = context.strokeStyle;
 }
@@ -114,6 +124,8 @@ function selectColor(){
 	else if(this === pink_select) context.fillStyle = 'pink';
 	else if(this === red_select) context.fillStyle = 'red';
 	else if(this === green_select) context.fillStyle = 'green';
+	else if(this === purple_select) context.fillStyle = 'purple';
+	else if(this === yellow_select) context.fillStyle = 'yellow';
 
 	context.fill();
 }
