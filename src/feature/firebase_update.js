@@ -1,3 +1,5 @@
+//Firebase Realtime Update of Canvas by Bisoye and Kamiye
+
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext("2d");
 
