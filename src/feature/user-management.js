@@ -57,7 +57,7 @@ ref.child('Username').on('value', loggedUser)
 }) 
  
  //Loading saved drawing
-
+/*
 $(document).ready(function()
 {	
  		$("#resumedrawing").click(function() 
@@ -75,3 +75,4 @@ $(document).ready(function()
 })
 
  	});
+*/
