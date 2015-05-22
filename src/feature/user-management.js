@@ -62,7 +62,7 @@ $(document).ready(function()
 {	
  		$("#resumedrawing").click(function() 
 	{
-		ref.child('Saved').once('value', function(snapshot) 
+		ref.child('Saved').on('value', function(snapshot) 
     {
       	var canvas = document.getElementById('canvas');
 		var context = canvas.getContext("2d");
