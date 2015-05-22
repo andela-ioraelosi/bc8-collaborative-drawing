@@ -75,7 +75,4 @@ $(document).ready(function()
 })
 
  	});
-<<<<<<< HEAD
 */
-=======
->>>>>>> src/feature/user-management.js
