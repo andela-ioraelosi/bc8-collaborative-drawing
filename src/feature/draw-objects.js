@@ -2,14 +2,12 @@
 * AUTHOR: OLUWAKAMIYE ADELEMONI
 * DATE: 21ST MAY, 2015
 * DECRIPTION: This script enables users to draw regular shapes
-* 			  as well as free line drawing like pencils. 
-			  The script also allows changing line colours
-			  and fill colours
-
+* 			  as well as free line drawing like pencils on a
+*			  canvas. The script also allows changing line colours
+*			  and fill colours.
 */
 
 // draw objects feature goes here
-console.log('Draw Objects Begin');
 
 // DEFINE SELECTORS
 // canvas
@@ -51,10 +49,6 @@ context.lineWidth = 5;
 context.font = '30px Garamond';
 var prevLineColor = context.strokeStyle;
 
-//context.fillText('Hello', 15, 175);
-
-//context.fillRect(10, 20, 50, 50);
-
 // DEFINE VARIABLES IN ONE PLACE
 // define object variables
 var circle, square, rectangle, triangle, pencil, erase;
@@ -87,9 +81,11 @@ greenline_select.onclick = selectLineColor;
 purpleline_select.onclick = selectLineColor;
 yellowline_select.onclick = selectLineColor;
 
+/*
 // saving the image
 save_button.onclick = saveDrawing;
 load_button.onclick = loadImage;
+*/
 
 
 
@@ -208,6 +204,7 @@ function createShape(event){
 
 
 // SAVE DRAWING RETURNS THE BASE64 FORMAT THAT CAN BE STORED IN THE DATABASE
+/*
 function saveDrawing(){
 	var dataURL = my_canvas.toDataURL();
 	console.log(dataURL);
@@ -219,6 +216,7 @@ function loadImage(){
 	img.src = ''; // IMAGE SOURCE DATA TO BE FETCHED FROM FIREBASE; 
 	context.drawImage(img,0,0);
 }
+*/
 
 
 // OBJECT CLASSES
