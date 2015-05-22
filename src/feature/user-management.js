@@ -9,7 +9,7 @@ var gameScore = function (loggeIn, imagedata)
 
 		this.loggedIn = true;
 		this.imagedata = imagedata
-	 	ref.child('savedDrawing').set(
+	 	ref.child('Saved').set(
 		 {
 		 	drawing: this.imagedata
 		 });
@@ -62,11 +62,14 @@ $(document).ready(function()
 {	
  		$("#resumedrawing").click(function() 
 	{
-		ref.child('savedDrawing').once('value', function(snapshot) 
+		ref.child('Saved').once('value', function(snapshot) 
     {
-      	var drawingStatus = snapshot.val();
-		var $saveddrawing = $("#canvas");
-		$saveddrawing.text(drawingStatus);
+      	var canvas = document.getElementById('canvas');
+		var context = canvas.getContext("2d");
+		var canvasValue = snapshot.val();
+		var img = new Image;
+		img.src = canvasValue["drawing"];
+		context.drawImage(img, 0, 0)
 		alert(" Saved Drawing Loaded Successfully");
 	}	)
 })
