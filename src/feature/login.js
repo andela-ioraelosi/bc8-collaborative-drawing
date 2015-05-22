@@ -6,7 +6,7 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 			// Register the callback to be fired every time auth state changes
 		function authHandler(error, authData) {
 		  if (error) {
-		    console.log("Login Failed!", error);
+		    alert("Login Failed!", error);
 		  } else {
 	  		window.location.href = 'canvas.html';
 		    console.log("Login Successful:", authData);
@@ -62,11 +62,11 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 	                        console.log('logging new registered user');
 	                        window.location.href = 'index.html';
 	                     } else {
-	                        console.log("Failed to register User");
+	                        alert("Failed to register User");
 	                     }
 	                });
 	            } else {
-	            	console.log("Confirm Passwords");
+	            	alert("Confirm Passwords");
 	            }
 	        }
 		);
@@ -91,10 +91,10 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 	          var emailObj = {email: email};
 	          ref.resetPassword(emailObj, function(error) {
 	            if (error === null) {
-	              console.log("Password reset email sent successfully");
+	              alert("Password reset email sent successfully");
 	            } 
 	            else {
-	              console.log("Error sending password reset email:", error);
+	              alert("Error sending password reset email:", error);
 	            }
 	          });
 	    });
