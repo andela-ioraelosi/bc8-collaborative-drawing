@@ -1,4 +1,6 @@
 
+//Saving and Loading Image, Users Display by Atolagbe Bisoye
+
 ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 
 
@@ -57,7 +59,7 @@ ref.child('Username').on('value', loggedUser);
 }) 
  
  //Loading saved drawing
-/*
+
 $(document).ready(function()
 {	
  		$("#resumedrawing").click(function() 
@@ -75,4 +77,4 @@ $(document).ready(function()
 })
 
  	});
-*/
+
