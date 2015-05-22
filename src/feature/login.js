@@ -85,12 +85,17 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
             }
 
 		);
+<<<<<<< HEAD
 		//event captures the reset password button and sends an email to the user
+=======
+
+>>>>>>> 16a56ea5fd3b3200f14ae5396388f0323fff9748
 		 $("#forgotPassword").click(function () {
 	       	  var email = $("#forgot-email").val();
 	          var emailObj = {email: email};
 	          ref.resetPassword(emailObj, function(error) {
 	            if (error === null) {
+<<<<<<< HEAD
 	              alert("Password reset email sent successfully");
 	            } 
 	            else {
@@ -99,6 +104,16 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 	          });
 	    });
 		 //event captures the click button from the canvas.html to logout a user 
+=======
+	              console.log("Password reset email sent successfully");
+	            } 
+	            else {
+	              console.log("Error sending password reset email:", error);
+	            }
+	          });
+	    });
+
+>>>>>>> 16a56ea5fd3b3200f14ae5396388f0323fff9748
 		$('#logout').click(function(){
 		ref.unauth();
 		window.location.href="index.html"
