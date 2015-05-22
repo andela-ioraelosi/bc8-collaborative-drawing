@@ -314,6 +314,12 @@ form:after {
     text-decoration: underline;
 }
 
+#usersOnline {
+	font:bold;
+	font-size:14pt;
+	font-family:tahoma;
+}
+
 
 .button a {
 	background: url(http://cssdeck.com/uploads/media/items/8/8bcLQqF.png) 0 -112px no-repeat;

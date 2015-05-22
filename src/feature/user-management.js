@@ -38,7 +38,7 @@ loggedUser = function()
 };
 
 
-ref.child('Username').on('value', loggedUser)
+ref.child('Username').on('value', loggedUser);
 
 //Saving drawing status...
 
