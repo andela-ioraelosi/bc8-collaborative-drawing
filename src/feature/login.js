@@ -50,19 +50,24 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 				var email = $("#register-email").val();
 	            var password = $("#register-password").val();
 				var username = $("#Username").val();
-				sendUsername(username);	            
-	            var userObj = { //creat object
-	            	email: email,
-	            	password: password
-	            };
-	            ref.createUser(userObj, function (error, user){
-	            	 if (!error) {
-                        console.log('logging new registered user');
-                        window.location.href = 'index.html';
-                     } else {
-                        console.log("Failed to register User");
-                     }
-                });
+				var confirmPassword = $("#confirm-password").val();
+				if (password === confirmPassword){
+					sendUsername(username);	            
+		            var userObj = { //creat object
+		            	email: email,
+		            	password: password
+		            };
+		            ref.createUser(userObj, function (error, user){
+		            	 if (!error) {
+	                        console.log('logging new registered user');
+	                        window.location.href = 'index.html';
+	                     } else {
+	                        console.log("Failed to register User");
+	                     }
+	                });
+	            } else {
+	            	console.log("Confirm Passwords");
+	            }
 	        }
 		);
 		//event captures the login button to log in a user if he has been registered
