@@ -9,7 +9,7 @@ var gameScore = function (loggeIn, imagedata)
 
 		this.loggedIn = true;
 		this.imagedata = imagedata
-	 	ref.child('savedDrawing').set(
+	 	ref.child('Saved').set(
 		 {
 		 	drawing: this.imagedata
 		 });
@@ -62,7 +62,7 @@ $(document).ready(function()
 {	
  		$("#resumedrawing").click(function() 
 	{
-		ref.child('savedDrawing').once('value', function(snapshot) 
+		ref.child('Saved').once('value', function(snapshot) 
     {
       	var drawingStatus = snapshot.val();
 		var $saveddrawing = $("#canvas");
