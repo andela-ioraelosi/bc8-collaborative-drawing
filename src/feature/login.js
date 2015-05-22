@@ -1,20 +1,18 @@
 //login codes go here!
+/* login.js page by Ore Olarewaju, this page is referenced by the html pages*/
 var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
-
-  	var User_ID = -1;
-  	var User = null;
 
 	$(function () {
 			// Register the callback to be fired every time auth state changes
 		function authHandler(error, authData) {
 		  if (error) {
-		    console.log("Login Failed!", error);
+		    alert("Login Failed!", error);
 		  } else {
 	  		window.location.href = 'canvas.html';
 		    console.log("Login Successful:", authData);
 		  }
 		}
-
+		//this function sends the username from register page to firebase data as JSON
 		 function sendUsername (username){
 			this.username = username
 			console.log('Setting:' +username );
@@ -23,7 +21,7 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 			})
 			
 		}
-
+		//this function retrieves the current state of the canvas (image source) from firebase data
 		function getCanvas (){
 
 			ref.child('savedDrawing').on("value", function(snapshot)
@@ -37,7 +35,7 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 				console.log(canvasValue["drawing"]);
 			})
 		} 
-
+		//this event captures the click on canvas and updates the current state in firebase
 		var canvas = $("#canvas");
 		canvas.click(function(){
 			var imgSrc = canvas.toDataURL();
@@ -46,37 +44,33 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
 			})
 
 		});
-
-
-		
-
-
+		//event captures the click button to create and register new user and then calls the sendUsername function
 		$("#register").click(
 			function () {
 				var email = $("#register-email").val();
 	            var password = $("#register-password").val();
 				var username = $("#Username").val();
-				sendUsername(username);	            
-	            var userObj = {
-	            	email: email,
-	            	password: password
-	            };
-	            ref.createUser(userObj, function (error, user){
-	            	 if (!error) {
-                        console.log('logging new registered user');
-                        //ToDo redirect to canvas page
-                        window.location.href = 'index.html';
-                     } else {
-                        console.log("Failed to register User");
-                     }
-                });
-
-                	
+				var confirmPassword = $("#confirm-password").val();
+				if (password === confirmPassword){
+					sendUsername(username);	            
+		            var userObj = { //creat object
+		            	email: email,
+		            	password: password
+		            };
+		            ref.createUser(userObj, function (error, user){
+		            	 if (!error) {
+	                        console.log('logging new registered user');
+	                        window.location.href = 'index.html';
+	                     } else {
+	                        alert("Failed to register User");
+	                     }
+	                });
+	            } else {
+	            	alert("Confirm Passwords");
+	            }
 	        }
-
-			
 		);
-
+		//event captures the login button to log in a user if he has been registered
 		$("#login").click(
 			function () {
 				console.log('trying to login: ' + $("#login-email").val());
@@ -91,20 +85,20 @@ var ref = new Firebase("https://dazzling-inferno-1426.firebaseio.com");
             }
 
 		);
-
+		//event captures the reset password button and sends an email to the user
 		 $("#forgotPassword").click(function () {
 	       	  var email = $("#forgot-email").val();
 	          var emailObj = {email: email};
 	          ref.resetPassword(emailObj, function(error) {
 	            if (error === null) {
-	              console.log("Password reset email sent successfully");
+	              alert("Password reset email sent successfully");
 	            } 
 	            else {
-	              console.log("Error sending password reset email:", error);
+	              alert("Error sending password reset email:", error);
 	            }
 	          });
 	    });
-
+		 //event captures the click button from the canvas.html to logout a user 
 		$('#logout').click(function(){
 		ref.unauth();
 		window.location.href="index.html"
